@@ -1,9 +1,19 @@
-import { API } from "./config/config";
+import { api } from "./config/config";
 import { Search } from "./components/Search/Search";
 import { GlobalStyles } from "./GlobalStyles";
+import { useEffect, useState } from "react";
 
 function App() {
-  console.log(API);
+  const [title, setTitle] = useState<string>("");
+
+  useEffect(() => {
+    const url = api("matrix");
+    console.log(url);
+    fetch(url)
+      .then((result) => result.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <>
       <GlobalStyles />
