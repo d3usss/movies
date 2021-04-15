@@ -1,7 +1,7 @@
+import { useEffect, useState } from "react";
 import { api } from "./config/config";
 import { Search } from "./components/Search/Search";
 import { GlobalStyles } from "./GlobalStyles";
-import { useEffect, useState } from "react";
 import { Movies } from "./components/Movies/Movies";
 
 export type Movie = {
@@ -9,6 +9,7 @@ export type Movie = {
   Title: string;
   Type: string;
   imdbID: string;
+  Year: string;
 };
 
 type Data = {
@@ -47,14 +48,16 @@ function App() {
   }, [title]);
 
   return (
-    <>
+    <main>
       <GlobalStyles />
       <div className="App">
         <h1>Movies search App</h1>
         <Search onSearchMovie={onSearchMovie} />
-        <Movies result={result} error={error} />
+        {result.length || error?.length ? (
+          <Movies result={result} error={error} />
+        ) : null}
       </div>
-    </>
+    </main>
   );
 }
 

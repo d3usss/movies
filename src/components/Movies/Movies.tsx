@@ -1,5 +1,7 @@
 import { FC } from "react";
 import { Movie } from "../../App";
+import { MovieComponent } from "./Movie/Movie";
+import { MovieWrapper } from "./Movies.styles";
 
 type MoviesProps = {
   result?: Movie[];
@@ -7,5 +9,24 @@ type MoviesProps = {
 };
 
 export const Movies: FC<MoviesProps> = ({ result, error }) => {
-  return <>{error ? <h2>{error}</h2> : <h2>Movies List</h2>}</>;
+  const isValidType = "movie";
+
+  return (
+    <>
+      {error ? <h2>{error}</h2> : <h2>Movies List</h2>}
+      <MovieWrapper>
+        {result?.map((movie) => {
+          const { Poster, Title, Year, imdbID, Type } = movie;
+          return Type === isValidType ? (
+            <MovieComponent
+              key={imdbID}
+              poster={Poster}
+              title={Title}
+              year={Year}
+            />
+          ) : null;
+        })}
+      </MovieWrapper>
+    </>
+  );
 };
