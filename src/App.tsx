@@ -1,7 +1,9 @@
+import { API } from "./config/config";
 import { Search } from "./components/Search/Search";
 import { GlobalStyles } from "./GlobalStyles";
 
 function App() {
+  console.log(API);
   return (
     <>
       <GlobalStyles />
