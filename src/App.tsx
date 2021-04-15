@@ -5,21 +5,26 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [title, setTitle] = useState<string>("");
+  const onSearchMovie = (title: string) => {
+    setTitle(title);
+  };
 
   useEffect(() => {
-    const url = api("matrix");
-    console.log(url);
-    fetch(url)
-      .then((result) => result.json())
-      .then((data) => console.log(data));
-  }, []);
+    const url = api(title);
+
+    if (title.length) {
+      fetch(url)
+        .then((result) => result.json())
+        .then((data) => console.log(data));
+    }
+  }, [title]);
 
   return (
     <>
       <GlobalStyles />
       <div className="App">
         <h1>Movies search App</h1>
-        <Search />
+        <Search onSearchMovie={onSearchMovie} />
       </div>
     </>
   );

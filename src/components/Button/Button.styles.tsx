@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ButtonProps, ButtonColors, ButtonTypes } from "./Button";
+import { ButtonProps, ButtonColors } from "./Button";
 
 export const ButtonStyled = styled.button<ButtonProps>`
   background-color: ${(props) =>
