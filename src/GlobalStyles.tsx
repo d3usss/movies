@@ -22,7 +22,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     h2 {
-        margin-top: 100px;
+        margin-top: 30px;
         font-size: 1.3em;
         font-style: italic;
         font-weight: 100;
